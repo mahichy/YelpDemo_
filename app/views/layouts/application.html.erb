@@ -11,14 +11,15 @@
 
   <body>
 
-    <a href="about">about</a>
-    <a href="contact">contact</a>
+    
+    <%= link_to "Pages", pages_about_path %>
+    <%= link_to "Contact", pages_contact_path %>
 
 
 
     <%= yield %>
 
-<p>copyright @mahichowdhury</p>
+    <p>copyright @mahichowdhury</p>
 
 
   </body>
