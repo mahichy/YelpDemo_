@@ -15,6 +15,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'rails_12factor', '~> 0.0.3', group: :production
 
+gem 'carrierwave', '~> 2.0'
+
 
 
 gem 'bootsnap', '>= 1.1.0', require: false
