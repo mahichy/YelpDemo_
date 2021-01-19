@@ -23,7 +23,7 @@
         <td><%= resturent.name %></td>
         <td><%= resturent.address %></td>
         <td><%= resturent.phone %></td>
-        <td><%= resturent.website %></td>
+        <td><%= link_to resturent.website, resturent.website %></td>
         <td><%= link_to 'Show', resturent, class: "btn btn-link" %></td>
         <td><%= link_to 'Edit', edit_resturent_path(resturent), class: "btn btn-link" %></td>
         <td><%= link_to 'Destroy', resturent, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %></td>
