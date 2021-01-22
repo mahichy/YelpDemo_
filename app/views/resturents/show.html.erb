@@ -19,6 +19,6 @@
   <strong>Website:</strong>
   <%= @resturent.website %>
 </p>
-
+<%= link_to "Create Review",  new_resturent_review_path(@resturent), class: "btn btn-primary" %>
 <%= link_to 'Edit', edit_resturent_path(@resturent), class: "btn btn-link" %> |
 <%= link_to 'Back', resturents_path, class: "btn btn-link" %>
