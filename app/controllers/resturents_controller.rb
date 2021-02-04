@@ -10,6 +10,7 @@ class ResturentsController < ApplicationController
   # GET /resturents/1
   # GET /resturents/1.json
   def show
+    @reviews = Review.where(resturent_id: @resturent.id)
   end
 
   # GET /resturents/new
