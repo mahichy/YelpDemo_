@@ -29,7 +29,7 @@
 				<h3>No reviews yet. Be the first to write one!</h3>
 			<% else %>
 				<% @reviews.each do |review|%>
-					<p><%= review.rating %></p>
+					<div class="star-rating" data-score= <%= review.rating %>></div>
 					<p><%= review.comment %></p>
 			<% end -%>
 		<% end -%>
@@ -40,3 +40,18 @@
 
 <%= link_to 'Edit', edit_resturent_path(@resturent), class: "btn btn-link" %> |
 <%= link_to 'Back', resturents_path, class: "btn btn-link" %>
+
+<script>
+$('.star-rating').raty({
+	path: 'assets/images',
+	readOnly: true,
+	 score: function() {
+    return 2 * 2;
+  }
+
+});
+</script>
+
+<!-- 	score: function() {
+    return $(this).attr(data-score);
+  } -->
