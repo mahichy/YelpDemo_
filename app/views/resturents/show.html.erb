@@ -38,6 +38,13 @@
 			<div class="col-md-9">
 					<div class="star-rating" data-score= <%= review.rating %>></div>
 					<p><%= review.comment %></p>
+
+					<% if user_signed_in? %>
+						<% if (review.user == current_user) || (current_user.admin?) %>
+							<%= link_to "Edit", edit_resturent_review_path(@resturent, review) %>
+							<%= link_to "Delete", resturent_review_path(@resturent, review), method: :delete %>
+							<% end -%>
+					<% end -%>
 			</div>
 				
 			<% end -%>
@@ -59,6 +66,3 @@ $('.star-rating').raty({
 });
 </script>
 
-<!-- 	score: function() {
-    return $(this).attr(data-score);
-  } -->

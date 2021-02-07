@@ -1,5 +1,7 @@
 class ResturentsController < ApplicationController
   before_action :set_resturent, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :check_user, except: [:index, :show] 
 
   # GET /resturents
   # GET /resturents.json
@@ -66,6 +68,12 @@ class ResturentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_resturent
       @resturent = Resturent.find(params[:id])
+    end
+
+    def check_user
+      unless current_user.admin?
+        redirect_to root_url, alert: "Sorry, Only admin can do that!" 
+      end
     end
 
     # Only allow a list of trusted parameters through.

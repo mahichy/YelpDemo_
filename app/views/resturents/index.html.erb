@@ -13,25 +13,32 @@
       <th>Address</th>
       <th>Phone</th>
       <th>Website</th>
-      <th colspan="3"></th>
+      <% if user_signed_in? && current_user.admin? %>
+        <th colspan="2"></th>
+      <% end -%>
     </tr>
   </thead>
 
   <tbody>
     <% @resturents.each do |resturent| %>
       <tr>
-        <td><%= resturent.name %></td>
+        <td><%= link_to resturent.name, resturent %></td>
         <td><%= resturent.address %></td>
         <td><%= resturent.phone %></td>
         <td><%= link_to resturent.website, resturent.website %></td>
-        <td><%= link_to 'Show', resturent, class: "btn btn-link" %></td>
-        <td><%= link_to 'Edit', edit_resturent_path(resturent), class: "btn btn-link" %></td>
-        <td><%= link_to 'Destroy', resturent, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %></td>
+        
+        <% if user_signed_in? && current_user.admin? %>
+          <td><%= link_to 'Show', resturent, class: "btn btn-link" %></td>
+          <td><%= link_to 'Edit', edit_resturent_path(resturent), class: "btn btn-link" %></td>
+          <td><%= link_to 'Destroy', resturent, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %></td>
+        <% end -%>
+
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Resturent', new_resturent_path, class: "btn btn-link" %>
+<% if user_signed_in? && current_user.admin? %>
+  <%= link_to 'New Resturent', new_resturent_path, class: "btn btn-link" %>
+<% end -%>
